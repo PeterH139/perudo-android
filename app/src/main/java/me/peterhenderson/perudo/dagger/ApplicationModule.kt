@@ -4,17 +4,22 @@ import android.app.Application
 import dagger.Component
 import dagger.Module
 import dagger.android.AndroidInjectionModule
-import dagger.android.ContributesAndroidInjector
 import me.peterhenderson.perudo.PerudoApplication
-import me.peterhenderson.perudo.home.HomeActivity
+import me.peterhenderson.perudo.core.CoreModule
+import me.peterhenderson.perudo.game.GameModule
 
 
-@Module
-abstract class ApplicationModule(private val app: Application) {
-    @ContributesAndroidInjector abstract fun contributeHomeActivityInjector(): HomeActivity
-}
+@Suppress("unused")
+@Module(includes = arrayOf(
+        CoreModule::class,
+        GameModule::class
+))
+abstract class ApplicationModule(private val app: Application)
 
-@Component(modules = arrayOf(AndroidInjectionModule::class, ApplicationModule::class))
+@Component(modules = arrayOf(
+        ApplicationModule::class,
+        AndroidInjectionModule::class
+))
 interface ApplicationComponent {
     fun inject(app: PerudoApplication)
 }
