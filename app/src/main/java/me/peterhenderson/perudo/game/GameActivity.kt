@@ -1,5 +1,7 @@
 package me.peterhenderson.perudo.game
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_game.*
 import me.peterhenderson.perudo.R
@@ -21,6 +23,7 @@ class GameActivity : BaseActivity(), GameView {
         presenter.onCreate(this)
         roll_dice.setOnClickListener { presenter.rollDiceTapped() }
     }
+
     override fun displayDice(diceRolls: List<Int>) {
         dice_one_label.text = diceRolls[0].toString()
         dice_two_label.text = diceRolls[1].toString()
@@ -30,3 +33,6 @@ class GameActivity : BaseActivity(), GameView {
     }
 }
 
+fun Context.GameActivityIntent(): Intent {
+    return Intent(this, GameActivity::class.java)
+}
