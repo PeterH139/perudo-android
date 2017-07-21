@@ -7,13 +7,11 @@ import dagger.android.AndroidInjectionModule
 import me.peterhenderson.perudo.PerudoApplication
 import me.peterhenderson.perudo.core.CoreModule
 import me.peterhenderson.perudo.game.GameModule
-import me.peterhenderson.perudo.login.LoginModule
 
 
 @Suppress("unused")
 @Module(includes = arrayOf(
         CoreModule::class,
-        LoginModule::class,
         GameModule::class
 ))
 abstract class ApplicationModule(private val app: Application)
